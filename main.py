@@ -1,4 +1,3 @@
-
 import board_toSVG as bsvg
 from chess import Board
 import sys
