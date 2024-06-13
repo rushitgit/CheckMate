@@ -18,7 +18,6 @@ for i in range(1,5):
 def move_generator(move):
     the_best_move= chess.Move.from_uci(move)
     return the_best_move
-
 def minimax_alpha_beta(board, depth, alpha, beta, maximizing_player):
     if depth == 0 or board.is_game_over():
         return evaluate_board(board)
@@ -45,19 +44,18 @@ def minimax_alpha_beta(board, depth, alpha, beta, maximizing_player):
             if beta <= alpha:
                 break  # Beta cutoff
         return value
-
+    
 def evaluate_board(board):
-    # Assign a high positive value for a winning position and a high negative value for a losing one
-    # Adjust the values as needed
+   
     if board.is_checkmate():
-        # Checkmate in favor of the player whose turn it is to move
+       
         return -9999 if board.turn else 9999
     elif board.is_stalemate() or board.is_insufficient_material():
         # Drawn game situations
         return 0
     else:
-        # Implement more sophisticated board evaluation here if needed
         return 0
+    
 
 def find_best_move(board, depth):
     legal_moves = list(board.legal_moves)
@@ -65,7 +63,6 @@ def find_best_move(board, depth):
     best_value = -float('inf')
     alpha = -float('inf')
     beta = float('inf')
-
     for move in legal_moves:
         board.push(move)
         value = minimax_alpha_beta(board, depth - 1, alpha, beta, False)
@@ -87,7 +84,15 @@ def find_best_move(board, depth):
 # 4. starting_fen='1k1K4/7R/8/8/3N4/8/8/8 w - - 0 1'
 
 # starting_fen= 'k7/5b2/7R/1K6/1P6/6BP/2P5/8 w - - 0 1' null 
-starting_fen= '1k1K4/7R/p7/1p6/3N2b1/8/P7/8 w - - 0 1'
+# starting_fen= '1k1K4/7R/p7/1p6/3N2b1/8/P7/8 w - - 0 1'
+
+
+# starting_fen= 'k7/1R6/1K6/8/8/8/8/8 w - - 0 1'
+
+# starting_fen='1k6/1p5R/6P1/K7/6B1/8/8/8 w - - 0 1'
+
+starting_fen='1k1K4/p6R/1p4p1/5b2/3N4/1P6/P7/8 w - - 0 1'
+
 # Create the initial board
 board = Board(starting_fen)
 print('initial position, AI to move')
@@ -95,7 +100,7 @@ print('initial position, AI to move')
 bsvg.save_board_svg(board, 'chess_board_1.svg')
 print(board)
 
-time.sleep(3)
+time.sleep(5)
 
 ctr=2
 max_moves = 6
@@ -129,8 +134,6 @@ while not board.is_checkmate() and move_count < max_moves:
     move_count += 2  # Assuming both AI and user make one move each in each iteration
     depth=depth-1
     
-    
-
 print("Game Over.")
 if board.is_checkmate():
     print("Checkmate!")
