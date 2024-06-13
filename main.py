@@ -1,5 +1,5 @@
 
-import board_toSVG as bsvg
+import board2SVG as bsvg
 from chess import Board
 import sys
 import chess
@@ -32,7 +32,7 @@ def minimax_alpha_beta(board, depth, alpha, beta, maximizing_player):
             board.pop()
             alpha = max(alpha, value)
             if beta <= alpha:
-                break  # Alpha cutoff
+                break  # Alpha cutoff (pruning)
         return value
     else:
         value = float('inf')
@@ -74,38 +74,29 @@ def find_best_move(board, depth):
 
     return best_move
 
+#  sample FENs
+# 'k7/7R/2K5/8/8/8/8/8 w - - 0 1'
+# 'k7/7R/8/1K6/8/8/8/8 w - - 0 1'
+# 'k7/7R/8/K7/8/8/8/8 w - - 0 1'
+# '1k1K4/7R/8/8/3N4/8/8/8 w - - 0 1'
+# 'k7/5b2/7R/1K6/1P6/6BP/2P5/8 w - - 0 1' null 
 
-
-# 1. starting_fen ='k7/7R/2K5/8/8/8/8/8 w - - 0 1'
-# 2. starting_fen ='k7/7R/8/1K6/8/8/8/8 w - - 0 1'
-
-# 3. starting_fen= 'k7/7R/8/K7/8/8/8/8 w - - 0 1'
-
-# 4. starting_fen='1k1K4/7R/8/8/3N4/8/8/8 w - - 0 1'
-
-# starting_fen= 'k7/5b2/7R/1K6/1P6/6BP/2P5/8 w - - 0 1' null 
-# starting_fen= '1k1K4/7R/p7/1p6/3N2b1/8/P7/8 w - - 0 1'
-
-
-# starting_fen= 'k7/1R6/1K6/8/8/8/8/8 w - - 0 1'
-
-# starting_fen='1k6/1p5R/6P1/K7/6B1/8/8/8 w - - 0 1'
 
 starting_fen='1k1K4/p6R/1p4p1/5b2/3N4/1P6/P7/8 w - - 0 1'
 
-# Create the initial board
+
 board = Board(starting_fen)
 print('initial position, AI to move')
 
 bsvg.save_board_svg(board, 'chess_board_1.svg')
 print(board)
 
-time.sleep(5)
+time.sleep(5) 
 
-ctr=2
+ctr=2 # counter for svg files
 max_moves = 6
 move_count = 0
-depth=3
+depth=3     # depth of the minimax algorithm
 while not board.is_checkmate() and move_count < max_moves:
     print("AI is thinking...")
     ai_move = find_best_move(board, depth)  # Adjust the depth as needed
