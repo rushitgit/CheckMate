@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckMater - A ChessAI Application</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+
+        #heading {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        #description {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        #chessBoard {
+            margin-top: 20px;
+        }
+
+        .chess-board-image {
+            width: 600px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        #resources {
+            margin-top: 50px;
+        }
+
+        #footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div id="heading">Check-Mater</div>
+    <div id="description">A ChessAI application for positions enforcing a checkmate within 3 moves.</div>
+    <div id="chessBoard"></div>
+    <div id="timer"></div>
+
+    <div id="resources">
+        <p>Resources:</p>
+        <ol>
+            <li><a href="https://lichess.org">lichess.org</a></li>
+            <li><a href="https://python-chess.readthedocs.io/en/latest/index.html">python-chess documentation</a></li>
+            <li><a href="https://www.sparkchess.com/chess-puzzles/dawid-przepiorka-vs-erich-eliskases.html">SparkChess Puzzles</a></li>
+        </ol>
+    </div>
+
+    <div id="footer">
+        <p>Made by Rushit Palesha and Yohan Khinvasara</p>
+    </div>
+
+    <script>
+        const container = document.getElementById('chessBoard');
+    
+        for (let i = 1; i <= 6; i++) {
+            console.log(`Creating image for i = ${i}`);
+            const img = document.createElement('img');
+            img.src = i === 1 ? 'chess_board_1.svg' : `chess_board_${i}.svg`;
+            img.alt = 'chess_board';
+            img.classList.add('chess-board-image');
+    
+            // Append the img to the container
+            container.appendChild(img);
+        }
+    </script>
+</body>
+</html>

@@ -8,8 +8,8 @@ def save_board_svg(board, file_path):
         svg_file.write(svg_content)
 
 # Example usage:
-# fen_notation = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
-# board = chess.Board(fen=fen_notation)
+fen_notation = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+board = chess.Board(fen=fen_notation)
 
 # Save the SVG content to a file
-    # save_board_svg(board, "chess_board.svg")
+save_board_svg(board, "chess_board.svg")
