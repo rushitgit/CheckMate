@@ -1,5 +1,5 @@
 
-import board2SVG as bsvg
+import board_toSVG as bsvg
 from chess import Board
 import sys
 import chess
