@@ -4,3 +4,5 @@ A ChessAI called CheckMater, which provides the optimal move leading to an enfor
 We display the game through a series of SVGs. An example scenario is as follows:
 
 ![image](https://github.com/rushitgit/CheckMate/assets/95172033/0a802950-ecde-4bbf-909b-529c82b11b56)
+
+The model plays the best moves in direction of the enforced checkmate pattern, and the end user makes his/her move via the command line.
